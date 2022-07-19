@@ -20,6 +20,7 @@ import (
 // retry, max times producer produces
 func produce(c chan int, number int, wg *sync.WaitGroup, retry int) {
 	defer wg.Done()
+	//for {
 	for i:=0; i< retry; i++{
 		select {
 		case c <- number:
