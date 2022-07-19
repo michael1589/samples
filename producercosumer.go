@@ -21,7 +21,7 @@ import (
 func produce(c chan int, number int, wg *sync.WaitGroup, retry int) {
 	defer wg.Done()
 	//for {
-	for i:=0; i< retry; i++{
+	for i := 0; i < retry; i++ {
 		select {
 		case c <- number:
 			number = number + 4
@@ -44,7 +44,7 @@ func consume(c chan int) {
 func main() {
 	wg := &sync.WaitGroup{}
 	ch := make(chan int)
-	for i:=1; i<5; i++{
+	for i := 1; i < 5; i++ {
 		wg.Add(1)
 		go produce(ch, i, wg, 3)
 	}
